@@ -1,17 +1,8 @@
-import {
-    APIGatewayProxyEvent as Event,
-    APIGatewayEventRequestContext as Context,
-    APIGatewayProxyResult as Result,
-} from 'aws-lambda';
-
+import { Event, Context, Result } from '../';
+import { IResourceHandler } from '../../types';
 import { MongoDb } from '../../db';
 
-interface IPipelineHandler
-{
-    [key: string]: (event: Event, context: Context) => Promise<Result>;
-}
-
-export function PipelineHandler(db: MongoDb): IPipelineHandler
+export function PipelineHandler(db: MongoDb): IResourceHandler
 {
     const get = async (event: Event, context: Context): Promise<Result> => {
         console.log(event);
