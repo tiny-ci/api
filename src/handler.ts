@@ -8,6 +8,7 @@ export function lambdaHandler(db: MongoDb): any
 
     const pipeline = PipelineHandler(db);
     router.get('/pipeline/:id', pipeline.get);
+    router.post('/pipeline', pipeline.post);
 
     return router.handle();
 }
