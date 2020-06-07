@@ -12,10 +12,10 @@ type SupportedDataTypes = string | string[] | number | boolean;
 
 enum EnvDataType
 {
-    Boolean,
-    String,
-    Number,
-    List,
+    Boolean = 'boolean',
+    String  = 'string',
+    Number  = 'number',
+    List    = 'list',
 }
 
 interface IRequiredEnvironmentVariable
@@ -52,7 +52,10 @@ export class Environment
                 return data;
 
             case EnvDataType.Number:
-                try { return parseInt(data); } catch (e) { return null; }
+                if (isNaN(parseInt(data)))
+                    return null;
+
+                return parseInt(data);
 
             case EnvDataType.List:
                 try { return data.split(','); } catch (e) { return null; }
