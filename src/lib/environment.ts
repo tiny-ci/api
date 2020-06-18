@@ -2,9 +2,10 @@ import { IHash } from './types';
 
 export enum RequiredEnv
 {
-    MongoHost        = 'MONGO_HOST',
-    MongoUser        = 'MONGO_USER',
-    MongoPass        = 'MONGO_PASS',
+    MongoHost   = 'MONGO_HOST',
+    MongoUser   = 'MONGO_USER',
+    MongoPass   = 'MONGO_PASS',
+    MongoDbName = 'MONGO_DB_NAME',
     MongoIsClustered = 'MONGO_IS_CLUSTERED',
 }
 
@@ -32,9 +33,10 @@ export class Environment
     public constructor()
     {
         this.envs = this.fetch([
-            this.addEnv(RequiredEnv.MongoHost, EnvDataType.String),
-            this.addEnv(RequiredEnv.MongoUser, EnvDataType.Number),
-            this.addEnv(RequiredEnv.MongoPass, EnvDataType.Number),
+            this.addEnv(RequiredEnv.MongoHost,   EnvDataType.String),
+            this.addEnv(RequiredEnv.MongoUser,   EnvDataType.Number),
+            this.addEnv(RequiredEnv.MongoPass,   EnvDataType.Number),
+            this.addEnv(RequiredEnv.MongoDbName, EnvDataType.Number),
             this.addEnv(RequiredEnv.MongoIsClustered, EnvDataType.String, false),
         ]);
     }
