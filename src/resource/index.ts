@@ -1,10 +1,4 @@
-import { APIGatewayProxyResult as Result } from 'aws-lambda';
-
-export {
-    APIGatewayProxyEvent as Event,
-    APIGatewayEventRequestContext as Context,
-    APIGatewayProxyResult as Result,
-} from 'aws-lambda';
+import { Result } from '../lib/types';
 
 interface IResult
 {

@@ -1,7 +1,12 @@
-import { APIGatewayProxyEvent, APIGatewayEventRequestContext, APIGatewayProxyResult } from 'aws-lambda';
+import {
+    APIGatewayProxyEvent as Event,
+    APIGatewayEventRequestContext as Context,
+    APIGatewayProxyResult as Result,
+} from 'aws-lambda';
 
-type Handler =
-    (event: APIGatewayProxyEvent, context: APIGatewayEventRequestContext) => Promise<APIGatewayProxyResult>
+export { Event, Context, Result };
+
+type Handler = (event: Event, context: Context) => Promise<Result>
 
 export interface IResourceHandler
 {
