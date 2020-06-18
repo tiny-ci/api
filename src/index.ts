@@ -1,4 +1,4 @@
-import { Environment, RequiredEnv } from './environment';
+import { Environment, RequiredEnv as ReqEnv } from './lib/environment';
 import { MongoDb } from './db';
 import { lambdaHandler } from './handler';
 
@@ -7,10 +7,11 @@ const env = new Environment();
 
 (async (): Promise<void> => {
     const dbConfig = {
-        host: env.get(RequiredEnv.MongoHost) as string,
-        user: env.get(RequiredEnv.MongoUser) as string,
-        pass: env.get(RequiredEnv.MongoPass) as string,
-        isClustered: Boolean(env.get(RequiredEnv.MongoIsClustered)),
+        host:   env.get(ReqEnv.MongoHost) as string,
+        user:   env.get(ReqEnv.MongoUser) as string,
+        pass:   env.get(ReqEnv.MongoPass) as string,
+        dbName: env.get(ReqEnv.MongoDbName) as string,
+        isClustered: Boolean(env.get(ReqEnv.MongoIsClustered)),
     };
 
     if (!db.isConnected()) {
