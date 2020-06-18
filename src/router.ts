@@ -1,8 +1,8 @@
 import * as router from 'aws-lambda-router';
 import {
     APIGatewayProxyEvent as Event,
-    APIGatewayEventRequestContext as Context,
     APIGatewayProxyResult as Result,
+    APIGatewayEventRequestContext as Context,
 } from 'aws-lambda';
 
 export type LambdaHandler = (event: Event, context: Context) => Promise<Result>
