@@ -1,7 +1,7 @@
 import { PipelineCreateSchemaValidator } from './schema';
-import { Event, Context, Result, sendResponse } from '../';
-import { IResourceHandler } from '../../types';
+import { sendResponse } from '../';
 import { MongoDb } from '../../db';
+import { Event, Context, Result, IResourceHandler } from '../../lib/types';
 
 export function PipelineHandler(db: MongoDb): IResourceHandler
 {
