@@ -1,12 +1,11 @@
-import { PipelineCreateSchemaValidator } from './schema';
-import { sendResponse } from '../';
-import { MongoDb } from '../../db';
 import { Event, Context, Result, IResourceHandler } from '../../lib/types';
+import { MongoDb } from '../../db';
+import { send } from '../response';
+
+import { PipelineCreateSchemaValidator } from './schema';
 
 export function PipelineHandler(db: MongoDb): IResourceHandler
 {
-    const send = sendResponse();
-
     const get = async (event: Event, context: Context): Promise<Result> => {
         return send.success();
     };
