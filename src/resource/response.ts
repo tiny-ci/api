@@ -5,7 +5,7 @@ interface IResult
     [key: string]: (body?: string) => Result;
 }
 
-export function sendResponse(): IResult
+function sendResponse(): IResult
 {
     const result = (body: string, statusCode: number): Result => { return { body, statusCode }; };
 
@@ -25,3 +25,6 @@ export function sendResponse(): IResult
 
     return { success, malformed };
 }
+
+const send = sendResponse();
+export { send };
