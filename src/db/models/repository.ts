@@ -10,4 +10,3 @@ export function RepositoryModel(db: MongoDb): any
 
     return { create };
 }
-
