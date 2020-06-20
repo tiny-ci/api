@@ -1,30 +1,34 @@
 import { Result } from '../lib/types';
 
+export enum ExErr
+{
+    UnparsableEventBody = 'could not parse event body',
+    InvalidEventBody    = 'event body does not match expected schema',
+}
+
 interface IResult
 {
     [key: string]: (body?: string) => Result;
 }
 
-function sendResponse(): IResult
+function ResponseSender(): IResult
 {
     const result = (body: string, statusCode: number): Result => { return { body, statusCode }; };
 
     const ok = (body: string): Result => { return result(body, 200); };
     const badRequest = (body: string): Result => { return result(body, 400); };
 
+    /* ----- */
     const malformed = (): Result => {
-        return badRequest(JSON.stringify({
-            message: 'received payload is malformed'
-        }));
+        return badRequest(JSON.stringify({ message: ExErr.InvalidEventBody }));
     };
 
+    /* ----- */
     const success = (body?: string): Result => {
-        if (!body) body = '';
-        return ok(body);
+        return ok(body || '');
     };
 
     return { success, malformed };
 }
 
-const send = sendResponse();
-export { send };
+export const send = ResponseSender();
