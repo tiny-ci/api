@@ -2,6 +2,7 @@ import { IHash } from './types';
 
 export enum RequiredEnv
 {
+    IsDebug     = 'IS_DEBUG',
     MongoHost   = 'MONGO_HOST',
     MongoUser   = 'MONGO_USER',
     MongoPass   = 'MONGO_PASS',
@@ -38,6 +39,7 @@ export class Environment
             this.addEnv(RequiredEnv.MongoPass,   EnvDataType.Number),
             this.addEnv(RequiredEnv.MongoDbName, EnvDataType.Number),
             this.addEnv(RequiredEnv.MongoIsClustered, EnvDataType.String, false),
+            this.addEnv(RequiredEnv.IsDebug, EnvDataType.String, false),
         ]);
     }
 
